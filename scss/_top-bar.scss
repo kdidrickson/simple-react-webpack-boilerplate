@@ -2,3 +2,13 @@
 	font-size: rem-calc(30);
 	font-weight: 600;
 }
+
+.top-bar-status {
+	white-space: nowrap;
+    margin-right: $global-margin;
+
+    .hasError & {
+    	font-style: italic;
+    	color: get-color('warning');
+    }
+}
