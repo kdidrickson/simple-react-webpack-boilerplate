@@ -1,11 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import WelcomeMessage from './welcome-message';
+import Layout from 'Layout';
 
 render(
-  <WelcomeMessage
-    message="Hello simple React webpack boilerplate"
-  />,
+  <Layout />,
   document.getElementById('app')
 );

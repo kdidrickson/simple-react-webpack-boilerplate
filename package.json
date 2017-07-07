@@ -1,5 +1,5 @@
 {
-  "name": "simple-react-webpack-boilerplate",
+  "name": "weathr",
   "version": "0.0.1",
   "scripts": {
     "start": "webpack --watch"
@@ -11,10 +11,20 @@
     "babel-plugin-transform-strict-mode": "^6.22.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
+    "foundation-sites": "^6.4.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
     "webpack": "^2.6.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.4",
+    "node-sass": "^4.5.3",
+    "redux-devtools": "^3.4.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2"
   }
 }

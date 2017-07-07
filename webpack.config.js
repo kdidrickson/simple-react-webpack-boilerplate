@@ -2,7 +2,10 @@ var path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './scripts/index.js',
+  entry: [
+    './scripts/index.js',
+    './scss/main.scss'
+  ],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'build')
@@ -23,7 +26,27 @@ module.exports = {
           ],
           cacheDirectory: true,
           plugins: ['transform-strict-mode', 'transform-object-rest-spread']
-        },
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+              loader: 'style-loader'
+          }, {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                url: false
+              }
+          }, {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                outputStyle: 'compressed'
+              }
+          }
+        ]
       }
     ]
   }
