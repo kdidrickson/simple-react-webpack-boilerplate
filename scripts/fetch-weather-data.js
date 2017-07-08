@@ -76,6 +76,11 @@ const fetchWeatherData = ({
       dispatch({ type: 'FETCH_WEATHER_DATA' });
     }
 
+    // If the request takes less than `minRequestDuration`, then artificially delay
+    // display of the result so there isn't a flashy/jerky effect
+    const requestTime = new Date();
+    const minRequestDuration = 1000; // in milliseconds
+
     // Cache the results
     const cacheData = data => {
       const now = new Date();
@@ -89,7 +94,17 @@ const fetchWeatherData = ({
     willFetchWeatherData
       .then( data => {
         cacheData( data );
-        dispatch({ type: 'FETCH_WEATHER_DATA', status: 'success', data });
+
+        let timeToWait = 0;
+
+        const doDispatchWeatherData = () => dispatch({ type: 'FETCH_WEATHER_DATA', status: 'success', data });
+        const requestDuration = moment(requestTime).diff( new Date() );
+
+        timeToWait = isCacheFresh ? 0 : minRequestDuration - requestDuration;
+
+        // If `timeToWait` is negative then `doDispatchWeatherData` will execute immediately
+        setTimeout( doDispatchWeatherData, timeToWait );
+        
       })
       .catch( weatherDataError => {
         cacheData({ ...weatherDataError, isError: true });
