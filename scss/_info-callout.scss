@@ -1,0 +1,8 @@
+.info-callout {
+	// Remove extra space caused by last row of the block grid
+	@each $breakpoint, $gutter in $grid-column-gutter {
+		@include breakpoint($breakpoint) {
+			margin-bottom: $gutter  *-1;
+		}
+	}
+}

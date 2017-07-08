@@ -1,4 +1,5 @@
 @import 'node_modules/foundation-sites/scss/foundation';
+@import 'node_modules/animate.css/animate';
 @import 'foundation-config';
 
 @include foundation-global-styles;
@@ -15,3 +16,6 @@
 
 @import 'layout';
 @import 'top-bar';
+@import 'loader';
+@import 'info-callout';
+@import 'well';

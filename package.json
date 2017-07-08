@@ -5,6 +5,8 @@
     "start": "webpack --watch"
   },
   "dependencies": {
+    "@fdaciuk/ajax": "^2.1.6",
+    "animate.css": "^3.5.2",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -12,12 +14,17 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-react": "^6.24.1",
     "foundation-sites": "^6.4.1",
+    "fs": "0.0.1-security",
+    "google-map-react": "^0.24.0",
+    "moment": "^2.18.1",
+    "mustache": "^2.3.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
+    "reqwest": "^2.0.5",
     "webpack": "^2.6.1"
   },
   "devDependencies": {

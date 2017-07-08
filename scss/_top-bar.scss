@@ -1,14 +1,64 @@
+.top-bar {
+	margin-bottom: $global-margin*2;
+
+	.loader {
+		display: none;
+		margin-right: $global-margin;
+		opacity: 0;
+		transition: opacity 200ms ease;
+
+		@include breakpoint(small down) {
+			display: block;
+			margin-bottom: $global-margin;
+			margin-right: 0;
+		}
+
+		.isFetchingWeatherData & {
+			display: block;
+			opacity: 1;
+		}
+	}
+	.loader-dot {
+		.notFetchingWeatherData & {
+			animation: none;
+		}
+	}
+}
+
 .top-bar-title {
 	font-size: rem-calc(30);
 	font-weight: 600;
+
+	@include breakpoint(small down) {
+		text-align: center;
+		font-size: rem-calc(50);
+		margin: 0;
+	}
 }
 
 .top-bar-status {
 	white-space: nowrap;
     margin-right: $global-margin;
 
+    @include breakpoint(small down) {
+		margin-bottom: $global-margin;
+		margin-right: 0;
+	}
+
     .hasError & {
     	font-style: italic;
     	color: get-color('warning');
     }
+}
+
+.top-bar-right {
+	@include breakpoint(small down) {
+		& > .menu {
+			justify-content: center;
+
+			form {
+				flex-direction: column;
+			}
+		}
+	}
 }

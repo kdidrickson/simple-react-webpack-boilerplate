@@ -8,8 +8,9 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'build')
+    path: path.join(__dirname, 'build'),
   },
+  devtool: 'source-map',
   resolve: {
     modules: ['scripts', 'node_modules']
   },
