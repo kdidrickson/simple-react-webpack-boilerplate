@@ -2,25 +2,22 @@
 	margin-bottom: $global-margin*2;
 
 	.loader {
-		display: none;
+		width: 0;
 		margin-right: $global-margin;
 		opacity: 0;
-		transition: opacity 200ms ease;
+		transition: opacity 200ms ease, width 200ms steps(1);
+		overflow: hidden;
 
 		@include breakpoint(small down) {
-			display: block;
+			width: $loader-width;
 			margin-bottom: $global-margin;
 			margin-right: 0;
 		}
 
 		.isFetchingWeatherData & {
-			display: block;
+			transition: opacity 200ms ease;
+			width: $loader-width;
 			opacity: 1;
-		}
-	}
-	.loader-dot {
-		.notFetchingWeatherData & {
-			animation: none;
 		}
 	}
 }

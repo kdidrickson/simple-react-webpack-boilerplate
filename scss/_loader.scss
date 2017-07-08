@@ -1,6 +1,9 @@
+$loader-width: 70px;
+$loader-height: 34px;
+
 .loader {
-	width: 70px;
-	height: 34px;
+	width: $loader-width;
+	height: $loader-height;
 	flex-shrink: 0;
 }
 
