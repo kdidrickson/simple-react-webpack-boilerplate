@@ -9,7 +9,8 @@ export default (
 		locationValue: null
 	}, {
 		type,
-		locationValue
+		locationValue,
+		errorMessage
 	}
 ) => {
 	switch( type ) {
@@ -28,6 +29,7 @@ export default (
 
 		case 'SET_CITY' :
 			locationValue = String( locationValue );
+			locationValue = locationValue.replace( /[^a-zA-Z\s]/g, '' ); // Sanitize the text input
 
 			// Spot-check whether the zip code could theoretically be valid
 			const isThisValidCity = isValidCity( locationValue );
@@ -51,7 +53,7 @@ export default (
 			return {
 				...state,
 				locationType: null,
-				errorMessage: `Enter a valid zip code or city name`, 
+				errorMessage: errorMessage ? errorMessage : `Enter a valid zip code or city name`, 
 				locationValue: null
 			}
 

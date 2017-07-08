@@ -14,26 +14,26 @@ const InfoCallout = ({
 				<div className="row small-up-2 medium-up-4 large-up-3">
 					<div className="column column-block">
 						<Well
-							label="Temperature"
-							value={ kelvinToFahrenheit( weatherData.data.main.temp ) }
+							label="Temperature (F)"
+							value={`${kelvinToFahrenheit( weatherData.data.main.temp )}\u00b0`}
 						/>
 					</div>
 					<div className="column column-block">
 						<Well
-							label="Low"
-							value={ kelvinToFahrenheit( weatherData.data.main.temp_min ) }
+							label="Low (F)"
+							value={`${kelvinToFahrenheit( weatherData.data.main.temp_min )}\u00b0`}
 						/>
 					</div>
 					<div className="column column-block">
 						<Well
-							label="High"
-							value={ kelvinToFahrenheit( weatherData.data.main.temp_max ) }
+							label="High (F)"
+							value={`${kelvinToFahrenheit( weatherData.data.main.temp_max )}\u00b0`}
 						/>
 					</div>
 					<div className="column column-block">
 						<Well
 							label="Humidity"
-							value={ weatherData.data.main.humidity }
+							value={`${weatherData.data.main.humidity}%`}
 						/>
 					</div>
 					<div className="column column-block">

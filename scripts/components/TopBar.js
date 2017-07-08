@@ -41,7 +41,7 @@ const TopBar = ({
 
                   const locationValue = this.locationInput.value;
 
-                  if( isValidZipCode( locationValue ) ) {
+                  if( locationValue.match(/^\s*\d+\s*$/) ) {
                     dispatch({
                       type: 'SET_ZIPCODE',
                       locationValue
@@ -51,13 +51,16 @@ const TopBar = ({
                       type: 'SET_CITY',
                       locationValue
                     });
-                  } else if( ! locationValue.match(/\w/) ) { // If the field is blank
+                  // If the field is blank or only whitespace
+                  } else if( ! locationValue || locationValue.match(/^\s*$/) ) {
                     dispatch({
                       type: 'RESET'
                     });
+                  // Otherwise the field value is composed of some weird characters
                   } else {
                     dispatch({
-                      type: 'SET_ERROR'
+                      type: 'SET_ERROR',
+                      errorMessage: `Enter a valid zip code or city name in English`
                     });
                   }
                 }
