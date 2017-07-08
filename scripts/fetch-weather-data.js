@@ -14,15 +14,15 @@ const fetchWeatherData = ({
   try {
     const localStorageKeyTemplate = '{{locationType}}:{{locationValue}}';
     const localStoragekeyName = Mustache.render( localStorageKeyTemplate, { locationType, locationValue } );
-    const apiKey = getSetting('apiKey');
-    const apiEndpoints = getSetting('apiEndpoints');
+    const weatherApiKey = getSetting('weatherApiKey');
+    const weatherApiEndpoints = getSetting('weatherApiEndpoints');
     let willFetchWeatherData = Promise.resolve();
 
     if( ! locationType ) {
       throw new Error(`Location type must be defined to fetch weather data`);
     }
 
-    if( ! apiEndpoints || ! apiEndpoints[locationType] ) {
+    if( ! weatherApiEndpoints || ! weatherApiEndpoints[locationType] ) {
       throw new Error(`No API endpoint is defined in the config file for ${locationType}`);
     }
 
@@ -47,8 +47,8 @@ const fetchWeatherData = ({
         willFetchWeatherData = Promise.resolve( cachedWeatherData );
       }
     } else {
-      const apiEndpoint = apiEndpoints[locationType];
-      const url = Mustache.render( apiEndpoint, { locationValue, apiKey } );
+      const apiEndpoint = weatherApiEndpoints[locationType];
+      const url = Mustache.render( apiEndpoint, { locationValue, weatherApiKey } );
 
       switch( locationType ) {
         case( 'zipCode' ) :
