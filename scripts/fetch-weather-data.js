@@ -95,12 +95,9 @@ const fetchWeatherData = ({
       .then( data => {
         cacheData( data );
 
-        let timeToWait = 0;
-
         const doDispatchWeatherData = () => dispatch({ type: 'FETCH_WEATHER_DATA', status: 'success', data });
         const requestDuration = moment(requestTime).diff( new Date() );
-
-        timeToWait = isCacheFresh ? 0 : minRequestDuration - requestDuration;
+        const timeToWait = isCacheFresh ? 0 : minRequestDuration - requestDuration;
 
         // If `timeToWait` is negative then `doDispatchWeatherData` will execute immediately
         setTimeout( doDispatchWeatherData, timeToWait );

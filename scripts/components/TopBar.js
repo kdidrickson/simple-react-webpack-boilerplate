@@ -13,6 +13,7 @@ const TopBar = ({
   location,
   weatherData
 }) => {
+  // Error messages from the location state branch take precedence over the weather data branch's error in the UI
   let errorMessage = location.errorMessage;
       errorMessage = errorMessage ? errorMessage : null;
       if( ! errorMessage ) {

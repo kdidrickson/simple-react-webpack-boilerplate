@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
@@ -10,6 +11,9 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, 'build'),
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ],
   devtool: 'source-map',
   resolve: {
     modules: ['scripts', 'node_modules']
